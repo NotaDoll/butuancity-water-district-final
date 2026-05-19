@@ -1,0 +1,33 @@
+/* ─────────────────────────────────────────────
+   css/components/page-hero.css
+   The full-width header banner used on inner pages.
+   Each page overrides the background-image in its
+   own page CSS file.
+───────────────────────────────────────────── */
+
+.page-hero {
+  background: linear-gradient(to bottom, rgba(20,35,80,0.7), rgba(20,35,80,0.5)),
+              url('../images/hero/page-hero-bg.jpg') center/cover no-repeat;
+  color: var(--color-white);
+  text-align: center;
+  padding: var(--space-20) var(--container-pad);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.page-hero__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.page-hero__subtitle {
+  font-size: var(--font-size-lg);
+  color: rgba(255,255,255,0.85);
+  max-width: 700px;
+  line-height: 1.6;
+}

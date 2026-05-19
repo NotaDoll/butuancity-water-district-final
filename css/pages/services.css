@@ -1,0 +1,307 @@
+/* ── SHARED SERVICE PAGE ── */
+.service-page {
+  padding: var(--space-12) 0 var(--space-20);
+  background: var(--color-gray-100);
+}
+
+/* ── RATES TABLE ── */
+.rates-card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: var(--space-8);
+}
+
+.rates-card__header {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--space-4) var(--space-6);
+}
+
+.rates-card__header h2 {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+}
+
+.rates-card__header p {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.8);
+  margin-top: var(--space-1);
+}
+
+.rates-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.rates-table th {
+  background: var(--color-gray-100);
+  padding: var(--space-3) var(--space-5);
+  text-align: left;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.rates-table td {
+  padding: var(--space-3) var(--space-5);
+  border-bottom: 1px solid var(--color-gray-200);
+  color: var(--color-text);
+}
+
+.rates-table tr:last-child td { border-bottom: none; }
+
+.rates-table tbody tr:nth-child(even) td {
+  background: var(--color-gray-100);
+}
+
+.rates-table tbody tr:hover td {
+  background: var(--color-accent-light);
+}
+
+.rates-table td:last-child,
+.rates-table th:last-child {
+  text-align: right;
+  font-weight: 600;
+}
+
+.rates-note {
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-gray-200);
+  background: #fffde7;
+  line-height: 1.6;
+}
+
+/* ── TRANSPARENCY SEAL ── */
+.seal-hero {
+  text-align: center;
+  padding: var(--space-12) var(--container-pad);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.seal-hero__img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  margin: 0 auto var(--space-6);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  padding: var(--space-4);
+}
+
+.seal-hero__title {
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+  margin-bottom: var(--space-3);
+}
+
+.seal-hero__subtitle {
+  font-size: var(--font-size-md);
+  color: rgba(255,255,255,0.85);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.seal-section {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-6);
+}
+
+.seal-section__title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-accent-light);
+}
+
+.seal-doc-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.seal-doc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.seal-doc:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.seal-doc__label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.seal-doc__icon {
+  color: var(--color-red);
+  flex-shrink: 0;
+}
+
+.seal-doc__link {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-accent);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  transition: color var(--transition);
+}
+
+.seal-doc__link:hover { color: var(--color-primary); text-decoration: underline; }
+.seal-doc__link:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── BREAKWATER ARCHIVE ── */
+.breakwater-archive {
+  padding: var(--space-12) 0 var(--space-20);
+}
+
+.breakwater-year {
+  margin-bottom: var(--space-10);
+}
+
+.breakwater-year__heading {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.breakwater-year__heading::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--color-gray-200);
+}
+
+.breakwater-archive__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-4);
+}
+
+.breakwater-issue {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.breakwater-issue__cover {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+  aspect-ratio: 3/4;
+  display: block;
+}
+
+.breakwater-issue__cover:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.breakwater-issue__cover:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-lg);
+}
+
+.breakwater-issue__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.breakwater-issue__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+  line-height: 1.4;
+}
+/* ── RESPONSIVE: SERVICES (water-rates, lab-charges, transparency-seal) ── */
+
+/* Tablet (≤768px) */
+@media (max-width: 768px) {
+  .seal-hero__img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .seal-hero__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  /* Rates table: reduce padding */
+  .rates-table th,
+  .rates-table td {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+  }
+
+  /* Breakwater archive: 3 columns */
+  .breakwater-archive__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Transparency seal docs */
+  .seal-doc {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .seal-doc__link {
+    align-self: flex-end;
+  }
+}
+
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
+  .rates-card__header {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .rates-table th,
+  .rates-table td {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+
+  /* Breakwater: 2 columns */
+  .breakwater-archive__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

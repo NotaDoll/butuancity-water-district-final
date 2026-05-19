@@ -1,0 +1,218 @@
+/* ── FILTER TABS ── */
+.bidding-hero {
+  background:
+    linear-gradient(
+      to bottom,
+      #020493 0%,
+      #0521c5 45%,
+      #5671ba 75%,
+      #ffffff 100%
+    ),
+    url("/butuancity-water-district-main/images/background/aboutbackground.png")
+      center/cover no-repeat;
+
+  background-blend-mode: overlay;
+
+  padding: var(--space-16) var(--container-pad) var(--space-20);
+}
+
+.bidding-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.bidding-filters__tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: var(--space-2) var(--space-4);
+  border-radius: 999px;
+  border: 1.5px solid var(--color-gray-200);
+  background: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-tab:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-tab.is-active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.filter-tab:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.bidding-filters__search {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+.bidding-filters__search input {
+  border: none;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  outline: none;
+  width: 220px;
+}
+
+.bidding-filters__search:focus-within {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 1px;
+  border-radius: var(--radius-md);
+}
+
+/* ── BIDDING TABLE ── */
+.bidding-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.bidding-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  font-size: var(--font-size-sm);
+}
+
+.bidding-table thead tr {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.bidding-table th {
+  padding: var(--space-4) var(--space-6);
+  text-align: left;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bidding-table td {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-gray-200);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.bidding-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.bidding-table tbody tr:hover td {
+  background-color: var(--color-accent-light);
+}
+
+.bidding-table tbody tr:focus-within td {
+  background-color: var(--color-accent-light);
+}
+
+.bidding-table .doc-type {
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.bidding-table .action-link {
+  color: var(--color-accent);
+  font-weight: 600;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  transition: color var(--transition);
+}
+
+.bidding-table .action-link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.bidding-table .action-link:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.bidding-section {
+  padding: var(--space-12) 0 var(--space-20);
+}
+
+/* Empty state */
+.bidding-empty {
+  text-align: center;
+  padding: var(--space-16) 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-md);
+  display: none;
+}
+/* ── RESPONSIVE: BIDDING ── */
+
+/* Tablet (≤768px) */
+@media (max-width: 768px) {
+  .bidding-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bidding-filters__tabs {
+    width: 100%;
+  }
+
+  .filter-tab {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .bidding-filters__search {
+    width: 100%;
+  }
+
+  .bidding-filters__search input {
+    width: 100%;
+  }
+
+  /* Table: allow horizontal scroll, already has overflow-x:auto on wrap */
+  .bidding-table th,
+  .bidding-table td {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
+  .bidding-filters__tabs {
+    gap: var(--space-1);
+  }
+
+  /* Hide the "Document Type" column to save space — least important on mobile */
+  .bidding-table th:first-child,
+  .bidding-table td:first-child {
+    display: none;
+  }
+}

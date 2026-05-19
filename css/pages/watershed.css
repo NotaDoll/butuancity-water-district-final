@@ -1,0 +1,307 @@
+/* PAGE HERO - with background image */
+.page-hero {
+  position: relative;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-3xl, 4rem) var(--space-lg, 1.5rem);
+  color: white;
+  isolation: isolate;
+}
+
+/* Dark overlay for text readability */
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: -1;
+}
+
+/* Specific watershed hero with forest/water image */
+.watershed-hero {
+  background-image: url('images/watershed/hero-watershed.jpg');
+  /* Fallback solid color while image loads */
+  background-color: #1a3c2c;
+}
+
+/* Fallback if the specific image doesn't exist */
+.watershed-hero {
+  background-image: url('images/hero-watershed-default.jpg');
+}
+
+/* Additional fallback if neither image exists - use a gradient as emergency */
+@supports not (background-image: url('images/watershed/hero-watershed.jpg')) {
+  .watershed-hero {
+    background: linear-gradient(135deg, #1a472a 0%, #0d2818 100%);
+  }
+}
+
+/* Title styling */
+.page-hero__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: var(--space-md, 1rem);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  max-width: 90%;
+}
+
+/* Subtitle styling */
+.page-hero__subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 400;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  max-width: 80%;
+  opacity: 0.95;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page-hero {
+    min-height: 40vh;
+    background-position: center 40%;
+  }
+  
+  .page-hero__subtitle {
+    max-width: 90%;
+  }
+}
+
+/* Optional: parallax effect (remove if not wanted) */
+.watershed-hero {
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .watershed-hero {
+    background-attachment: scroll; /* Better performance on mobile */
+  }
+}
+
+/* ── PROJECT LOCATION ── */
+.project-location {
+  padding: var(--space-16) 0;
+}
+
+.project-location__title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.project-location__divider {
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-primary);
+  margin: 0 auto var(--space-8);
+  border-radius: 2px;
+}
+
+.project-location__body {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  line-height: 1.8;
+  max-width: 860px;
+  margin: 0 auto var(--space-10);
+  text-align: justify;
+}
+
+.project-location__map {
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius-xl);
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+/* ── IEC MATERIALS ── */
+.iec-materials {
+  background-color: #e8edf5;
+  padding: var(--space-16) 0;
+  text-align: center;
+}
+
+.iec-materials__title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+.iec-materials__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  max-width: 680px;
+  margin: 0 auto var(--space-10);
+  line-height: 1.7;
+}
+
+.iec-featured {
+  max-width: 340px;
+  margin: 0 auto var(--space-10);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition);
+}
+
+.iec-featured:hover {
+  transform: translateY(-4px);
+}
+
+.iec-featured img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.iec-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.iec-grid__item {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  aspect-ratio: 3/4;
+}
+
+.iec-grid__item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.iec-grid__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.iec-grid__item:focus-within {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+/* ── RESPONSIVE: WATERSHED ── */
+
+/* Tablet (≤1024px) */
+@media (max-width: 1024px) {
+  .iec-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tablet portrait (≤768px) */
+@media (max-width: 768px) {
+  .watershed-hero {
+    background-attachment: scroll; /* parallax kills mobile perf */
+    min-height: 40vh;
+  }
+
+  .project-location__map {
+    height: 320px;
+  }
+
+  .iec-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .iec-featured {
+    max-width: 260px;
+  }
+}
+
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
+  .project-location__body {
+    text-align: left; /* justified text is hard to read on narrow screens */
+  }
+
+  .project-location__map {
+    height: 260px;
+    border-radius: var(--radius-lg);
+  }
+
+  .iec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* IEC Materials Grid Styles */
+.watershed-year-group {
+  margin-bottom: 48px;
+}
+
+.watershed-year-heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a2e5a;
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #4a90d9;
+  display: inline-block;
+}
+
+.watershed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.watershed-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.watershed-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.watershed-card a {
+  display: block;
+  text-decoration: none;
+}
+
+.watershed-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.watershed-card-caption {
+  padding: 12px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  background: #fff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .watershed-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+  
+  .watershed-year-heading {
+    font-size: 1.5rem;
+  }
+} 

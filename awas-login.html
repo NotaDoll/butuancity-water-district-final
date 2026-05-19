@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Online Billing Inquiry – Log in to view your BCWD water bill." />
+  <title>Online Billing Inquiry | BCWD</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/awas-sub.css" />
+  <link rel="stylesheet" href="css/site-search.css">
+</head>
+<body>
+
+ <div id="navbar-placeholder"></div>
+<div class="navbar-offset"></div>
+
+  <div id="advisory-placeholder"></div>
+
+  <nav class="sub-breadcrumb" aria-label="Breadcrumb">
+    <div class="sub-breadcrumb__inner">
+      <a href="awas.html">AWAS</a>
+      <span class="sub-breadcrumb__sep" aria-hidden="true">›</span>
+      <span aria-current="page">Online Billing Inquiry</span>
+    </div>
+  </nav>
+
+  <main id="main-content" class="sub-page">
+    <div class="container">
+      <div class="form-card" aria-labelledby="login-title">
+        <h1 class="form-card__title" id="login-title">Log In</h1>
+        <p class="form-card__subtitle">Access your Online Billing Inquiry account.</p>
+
+        <form id="login-form" novalidate>
+          <div class="form-group" id="fg-username">
+            <label for="username">Username or Account Number</label>
+            <input type="text" id="username" name="username" autocomplete="username" required aria-describedby="username-error" />
+            <span class="form-group__error" id="username-error" role="alert">Please enter your username or account number.</span>
+          </div>
+          <div class="form-group" id="fg-password">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required aria-describedby="password-error" />
+            <span class="form-group__error" id="password-error" role="alert">Please enter your password.</span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Log In</button>
+        </form>
+
+        <div class="form-card__footer">
+          <p>Don't have an account? <a href="awas-signup.html">Sign Up</a></p>
+          <p style="margin-top:0.5rem;"><a href="#">Forgot password?</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-secondary-placeholder"></div>
+
+
+  <script src="js/main.js"></script>
+  <script src="js/pages/awas-forms.js"></script>
+  <script src="js/search-auto.js"></script>
+  <script src="js/site-search.js"></script>
+</body>
+</html>

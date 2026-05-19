@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AWAS – Manage your water account, pay bills, apply for new connections, and stay updated with advisories."
+    />
+    <title>AWAS | Butuan City Water District</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages/awas.css" />
+    <link rel="stylesheet" href="css/site-search.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- NAVBAR -->
+    <div id="navbar-placeholder"></div>
+    <div class="navbar-offset"></div>
+
+    <!-- ADVISORY -->
+    <div id="advisory-placeholder"></div>
+    </div>
+
+    <main id="main-content">
+      <!-- HERO -->
+      <!-- HERO -->
+      <section class="page-hero awas-hero" aria-labelledby="awas-title">
+        <h1 class="page-hero__title" id="awas-title">AWAS</h1>
+        <p class="page-hero__subtitle">
+          Manage your water account, pay bills, apply for new connections, and
+          stay updated with advisories — all in one place.
+        </p>
+      </section>
+
+      <!-- SERVICE CARDS - ENTIRE CARDS ARE NOW CLICKABLE -->
+      <section
+        class="awas-services section"
+        aria-labelledby="awas-services-heading"
+      >
+        <div class="container">
+          <h2 class="visually-hidden" id="awas-services-heading">
+            AWAS Services
+          </h2>
+          <ul class="awas-services__grid" role="list">
+            <!-- Card 1: Bill Inquiry - Entire card is clickable -->
+            <li class="awas-card">
+              <a
+                href="awas-bill-inquiry.html"
+                class="awas-card__link-wrapper"
+                aria-label="Go to Bill Inquiry"
+              >
+                <img
+                  src="images/icons/bill-inquiry.png"
+                  alt=""
+                  class="awas-card__icon"
+                  aria-hidden="true"
+                />
+                <h3 class="awas-card__title">Bill Inquiry</h3>
+                <p class="awas-card__desc">
+                  24/7 secure online access to review your bill.
+                </p>
+              </a>
+            </li>
+
+            <!-- Card 2: Bill Calculator - Entire card is clickable -->
+            <li class="awas-card">
+              <a
+                href="awas-calculator.html"
+                class="awas-card__link-wrapper"
+                aria-label="Go to Bill Calculator"
+              >
+                <img
+                  src="images/icons/bill-calculator.png"
+                  alt=""
+                  class="awas-card__icon"
+                  aria-hidden="true"
+                />
+                <h3 class="awas-card__title">Bill Calculator</h3>
+                <p class="awas-card__desc">
+                  Know and calculate your bill consumption.
+                </p>
+              </a>
+            </li>
+
+            <!-- Card 3: Electronic Billing - Entire card is clickable -->
+            <li class="awas-card">
+              <a
+                href="awas-ebill.html"
+                class="awas-card__link-wrapper"
+                aria-label="Go to Electronic Billing"
+              >
+                <img
+                  src="images/icons/electronic-billing.png"
+                  alt=""
+                  class="awas-card__icon"
+                  aria-hidden="true"
+                />
+                <h3 class="awas-card__title">Electronic Billing</h3>
+                <p class="awas-card__desc">
+                  Faster and more convenient way to receive your bill.
+                </p>
+              </a>
+            </li>
+
+            <!-- Card 4: Online Payment - Entire card is clickable -->
+            <li class="awas-card">
+              <a
+                href="awas-payment.html"
+                class="awas-card__link-wrapper"
+                aria-label="Go to Online Payment"
+              >
+                <img
+                  src="images/icons/online-payment.png"
+                  alt=""
+                  class="awas-card__icon"
+                  aria-hidden="true"
+                />
+                <h3 class="awas-card__title">Online Payment</h3>
+                <p class="awas-card__desc">
+                  Pay your water bills online anytime, anywhere.
+                </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ - Links to FAQ page -->
+      <section class="awas-faq" aria-label="Frequently Asked Questions">
+        <div class="container">
+          <a
+            href="awas-faq.html"
+            class="awas-faq__btn"
+            aria-label="View Frequently Asked Questions"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            FAQ
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+   <div id="footer-placeholder"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/search-auto.js"></script>
+    <script src="js/site-search.js"></script>
+    <script>
+      // Update year in footer
+      const yearSpan = document.querySelector(".year");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+/*
+  css/components.css
+  ──────────────────────────────────────────────
+  This file exists because every HTML page links:
+    <link rel="stylesheet" href="css/components.css">
+
+  All actual component styles are imported through
+  global.css via @import. This file intentionally
+  re-imports global.css so pages that link BOTH
+  files don't break — the browser deduplicates.
+
+  If you want, you can also just delete all the
+  <link rel="stylesheet" href="css/components.css">
+  lines from every HTML file, since global.css
+  already imports all components. Either approach works.
+──────────────────────────────────────────────
+*/
+
+/* Re-export everything from global.css so pages
+   linking only this file still get all styles. */
+@import 'global.css';

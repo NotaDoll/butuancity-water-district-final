@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Online Payment – Pay your BCWD water bill via GCash or Maya." />
+  <title>Online Payment | BCWD</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/awas-sub.css" />
+  <link rel="stylesheet" href="css/site-search.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div id="navbar-placeholder"></div>
+<div class="navbar-offset"></div>
+
+  <div id="advisory-placeholder"></div>
+
+  <nav class="sub-breadcrumb" aria-label="Breadcrumb">
+    <div class="sub-breadcrumb__inner">
+      <a href="awas.html">AWAS</a>
+      <span class="sub-breadcrumb__sep" aria-hidden="true">›</span>
+      <span aria-current="page">Online Payment</span>
+    </div>
+  </nav>
+
+  <main id="main-content" class="sub-page">
+    <div class="container" style="max-width:860px;">
+      <h1 style="font-size:var(--font-size-3xl);font-weight:800;text-align:center;margin-bottom:var(--space-8);">Online Payment</h1>
+
+      <!-- Payment method tabs -->
+      <div role="tablist" aria-label="Payment methods" class="payment-tabs">
+        <button class="payment-tab payment-tab--gcash is-active" role="tab" aria-selected="true" aria-controls="panel-gcash" id="tab-gcash">
+          GCash
+        </button>
+        <button class="payment-tab payment-tab--maya" role="tab" aria-selected="false" aria-controls="panel-maya" id="tab-maya">
+          Maya
+        </button>
+      </div>
+
+      <!-- GCash Panel -->
+      <div class="payment-panel is-active" id="panel-gcash" role="tabpanel" aria-labelledby="tab-gcash">
+        <p style="margin-bottom:var(--space-6);color:var(--color-text-muted);">Pay your BCWD water bill via GCash</p>
+
+        <div class="video-placeholder" aria-label="GCash payment tutorial video">
+          <button class="video-placeholder__play" aria-label="Play GCash tutorial video">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+
+        <h2 style="font-size:var(--font-size-xl);font-weight:700;margin-bottom:var(--space-6);">Step-by-step guide</h2>
+        
+        <!-- GCash Steps with alternating layout -->
+        <div class="steps-container">
+          <!-- Step 1: Image left, text right -->
+          <div class="step-item step-item--image-left">
+            <div class="step-item__image">
+              <img src="images/payment/g1.png" alt="Step 1: Open GCash app and tap Pay Bills" />
+            </div>
+            <div class="step-item__content">
+              <span class="step-number">Step 1</span>
+              <p class="step-description">Log-in to your GCash app. Choose and click the <strong><em>Bills</em></strong> option</p>
+            </div>
+          </div>
+
+          <!-- Step 2: Text left, image right -->
+          <div class="step-item step-item--text-left">
+            <div class="step-item__content">
+              <span class="step-number">Step 2</span>
+              <p class="step-description">Select <strong><em>Water Utilities</em></strong> under categories</p>
+            </div>
+            <div class="step-item__image">
+              <img src="images/payment/g2.png" alt="Step 2: Select Water under categories" />
+            </div>
+          </div>
+
+          <!-- Step 3: Image left, text right -->
+          <div class="step-item step-item--image-left">
+            <div class="step-item__image">
+              <img src="images/payment/g3.png" alt="Step 3: Select Butuan City Water District from the list" />
+            </div>
+            <div class="step-item__content">
+              <span class="step-number">Step 3</span>
+              <p class="step-description">Search for <strong><em>Butuan City Water District</em></strong> and click</p>
+            </div>
+          </div>
+
+          <!-- Step 4: Text left, image right -->
+          <div class="step-item step-item--text-left">
+            <div class="step-item__content">
+              <span class="step-number">Step 4</span>
+              <p class="step-description">Enter your <strong><em>Account Number</em></strong> and <strong><em>Amount</em></strong></p>
+            </div>
+            <div class="step-item__image">
+              <img src="images/payment/g4.png" alt="Step 4: Enter your account number and amount" />
+            </div>
+          </div>
+
+          <!-- Step 5: Image left, text right (no image, center text) -->
+          <div class="step-item step-item--image-left step-item--no-image">
+            <div class="step-item__image step-item__image--placeholder">
+              <div class="image-placeholder">✓</div>
+            </div>
+            <div class="step-item__content">
+              <span class="step-number">Step 5</span>
+              <p class="step-description">Review and <strong><em>Confirm</em></strong> your payment</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Maya Panel -->
+      <div class="payment-panel" id="panel-maya" role="tabpanel" aria-labelledby="tab-maya" hidden>
+        <p style="margin-bottom:var(--space-6);color:var(--color-text-muted);">Pay your BCWD water bill via Maya</p>
+
+        <div class="video-placeholder" aria-label="Maya payment tutorial video">
+          <button class="video-placeholder__play" aria-label="Play Maya tutorial video">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+
+        <h2 style="font-size:var(--font-size-xl);font-weight:700;margin-bottom:var(--space-6);">Step-by-step guide</h2>
+        
+        <!-- Maya Steps with alternating layout -->
+        <div class="steps-container">
+          <!-- Step 1: Image left, text right -->
+          <div class="step-item step-item--image-left">
+            <div class="step-item__image">
+              <img src="images/payment/m1.png" alt="Step 1: Open Maya app and tap Pay Bills" />
+            </div>
+            <div class="step-item__content">
+              <span class="step-number">Step 1</span>
+              <p class="step-description">Log-in to your MAYA app. Choose and click the <strong><em>Bills</em></strong> option</p>
+            </div>
+          </div>
+
+          <!-- Step 2: Text left, image right -->
+          <div class="step-item step-item--text-left">
+            <div class="step-item__content">
+              <span class="step-number">Step 2</span>
+              <p class="step-description">Select <strong><em>Water Utility</em></strong></p>
+            </div>
+            <div class="step-item__image">
+              <img src="images/payment/m2.png" alt="Step 2: Search for Water Utility" />
+            </div>
+          </div>
+
+          <!-- Step 3: Image left, text right -->
+          <div class="step-item step-item--image-left">
+            <div class="step-item__image">
+              <img src="images/payment/m3.png" alt="Step 3: Select Butuan City Water District BCWD" />
+            </div>
+            <div class="step-item__content">
+              <span class="step-number">Step 3</span>
+              <p class="step-description">Scroll down and look for <strong><em>Butuan City Water District (BCWD)</em></strong> and click</p>
+            </div>
+          </div>
+
+          <!-- Step 4: Text left, image right -->
+          <div class="step-item step-item--text-left">
+            <div class="step-item__content">
+              <span class="step-number">Step 4</span>
+              <p class="step-description">Input your <strong><em>Account Number</em></strong> and <strong><em>Amount</em></strong></p>
+            </div>
+            <div class="step-item__image">
+              <img src="images/payment/m4.png" alt="Step 4: Enter account details" />
+            </div>
+          </div>
+
+          <!-- Step 5: Image left, text right (no image, center text) -->
+          <div class="step-item step-item--image-left step-item--no-image">
+            <div class="step-item__image step-item__image--placeholder">
+              <div class="image-placeholder">✓</div>
+            </div>
+            <div class="step-item__content">
+              <span class="step-number">Step 5</span>
+              <p class="step-description">Review and <strong><em>Confirm</em></strong> payment</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-secondary-placeholder"></div>
+
+
+  <script src="js/main.js"></script>
+  <script src="js/pages/awas-payment.js"></script>
+  <script src="js/search-auto.js"></script>
+  <script src="js/site-search.js"></script>
+</body>
+</html>

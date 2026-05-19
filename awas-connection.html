@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="New Service Connection Application – Apply for a new BCWD water connection online." />
+  <title>New Service Connection | BCWD</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/awas-sub.css" />
+  <link rel="stylesheet" href="css/site-search.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+<div class="navbar-offset"></div>
+
+<div id="advisory-placeholder"></div>
+
+  <nav class="sub-breadcrumb" aria-label="Breadcrumb">
+    <div class="sub-breadcrumb__inner">
+      <a href="awas.html">AWAS</a>
+      <span class="sub-breadcrumb__sep" aria-hidden="true">›</span>
+      <span aria-current="page">New Service Connection Application</span>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="page-hero" style="min-height:200px;padding:var(--space-12) var(--container-pad);" aria-labelledby="conn-title">
+      <h1 class="page-hero__title" id="conn-title">New Service Connection Application</h1>
+      <p class="page-hero__subtitle">File your online service connection application for the convenience of your time and travel.</p>
+    </section>
+
+    <section class="sub-page" aria-labelledby="conn-steps-heading">
+      <div class="container" style="max-width:700px;">
+
+        <!-- Stepper -->
+        <nav class="stepper" aria-label="Application steps">
+          <div class="stepper__step is-active" aria-current="step">
+            <div class="stepper__circle">1</div>
+            <span class="stepper__label">Personal Info</span>
+          </div>
+          <div class="stepper__step">
+            <div class="stepper__circle">2</div>
+            <span class="stepper__label">Location</span>
+          </div>
+          <div class="stepper__step">
+            <div class="stepper__circle">3</div>
+            <span class="stepper__label">Documents</span>
+          </div>
+        </nav>
+
+        <div class="form-card" aria-labelledby="conn-steps-heading">
+          <h2 class="form-card__title" id="conn-steps-heading">Personal Information</h2>
+
+          <form id="connection-form" novalidate>
+            <div class="form-row">
+              <div class="form-group" id="fg-conn-first">
+                <label for="conn-firstname">First Name <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+                <input type="text" id="conn-firstname" name="firstname" autocomplete="given-name" required aria-required="true" aria-describedby="conn-first-error" />
+                <span class="form-group__error" id="conn-first-error" role="alert">First name is required.</span>
+              </div>
+              <div class="form-group" id="fg-conn-last">
+                <label for="conn-lastname">Last Name <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+                <input type="text" id="conn-lastname" name="lastname" autocomplete="family-name" required aria-required="true" aria-describedby="conn-last-error" />
+                <span class="form-group__error" id="conn-last-error" role="alert">Last name is required.</span>
+              </div>
+            </div>
+
+            <div class="form-group" id="fg-conn-email">
+              <label for="conn-email">Email Address <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+              <input type="email" id="conn-email" name="email" autocomplete="email" required aria-required="true" aria-describedby="conn-email-error" />
+              <span class="form-group__error" id="conn-email-error" role="alert">Please enter a valid email address.</span>
+            </div>
+
+            <div class="form-group" id="fg-conn-mobile">
+              <label for="conn-mobile">Mobile Number <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+              <input type="tel" id="conn-mobile" name="mobile" autocomplete="tel" placeholder="09XXXXXXXXX" required aria-required="true" aria-describedby="conn-mobile-error" />
+              <span class="form-group__error" id="conn-mobile-error" role="alert">Please enter a valid mobile number.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="conn-type">Connection Type <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+              <select id="conn-type" name="connection_type" required aria-required="true">
+                <option value="">Select type…</option>
+                <option value="residential">Residential</option>
+                <option value="commercial">Commercial</option>
+                <option value="industrial">Industrial</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Next Step →</button>
+          </form>
+
+          <div class="notice-banner" role="note">
+            ⚠️ After submitting your online application, a BCWD representative will contact you within 3-5 business days to schedule a site inspection and discuss connection requirements.
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+<div id="footer-secondary-placeholder"></div>
+
+
+  <script src="js/main.js"></script>
+  <script src="js/pages/awas-forms.js"></script>
+  <script src="js/search-auto.js"></script>
+  <script src="js/site-search.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sign Up – Create your BCWD Online Billing Inquiry account." />
+  <title>Sign Up | BCWD</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/awas-sub.css" />
+  <link rel="stylesheet" href="css/site-search.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div id="navbar-placeholder"></div>
+<div class="navbar-offset"></div>
+
+  <div id="advisory-placeholder"></div>
+
+  <nav class="sub-breadcrumb" aria-label="Breadcrumb">
+    <div class="sub-breadcrumb__inner">
+      <a href="awas.html">AWAS</a>
+      <span class="sub-breadcrumb__sep" aria-hidden="true">›</span>
+      <a href="awas-login.html">Online Billing Inquiry</a>
+      <span class="sub-breadcrumb__sep" aria-hidden="true">›</span>
+      <span aria-current="page">Sign Up</span>
+    </div>
+  </nav>
+
+  <main id="main-content" class="sub-page">
+    <div class="container">
+      <div class="form-card" style="max-width:600px;" aria-labelledby="signup-title">
+        <img src="images/logo/bcwd-logo.png" alt="" style="width:52px;margin:0 auto var(--space-4);display:block;" aria-hidden="true" />
+        <h1 class="form-card__title" id="signup-title">Sign Up</h1>
+        <p class="form-card__subtitle">
+          By creating an account you can access the online statement of account. Make sure the information you provide match the records in our billing database.
+        </p>
+
+        <form id="signup-form" novalidate>
+
+          <p class="form-section-label">Personal Information</p>
+
+          <div class="form-row">
+            <div class="form-group" id="fg-firstname">
+              <label for="firstname">First Name <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+              <input type="text" id="firstname" name="firstname" autocomplete="given-name" required aria-required="true" aria-describedby="firstname-error" />
+              <span class="form-group__error" id="firstname-error" role="alert">First name is required.</span>
+            </div>
+            <div class="form-group" id="fg-middlename">
+              <label for="middlename">Middle Name</label>
+              <input type="text" id="middlename" name="middlename" autocomplete="additional-name" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" id="fg-lastname">
+              <label for="lastname">Last Name <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+              <input type="text" id="lastname" name="lastname" autocomplete="family-name" required aria-required="true" aria-describedby="lastname-error" />
+              <span class="form-group__error" id="lastname-error" role="alert">Last name is required.</span>
+            </div>
+            <div class="form-group" id="fg-suffix">
+              <label for="suffix">Suffix</label>
+              <input type="text" id="suffix" name="suffix" placeholder="Jr., Sr., III…" />
+            </div>
+          </div>
+
+          <div class="form-group" id="fg-account">
+            <label for="account-number">Account Number <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+            <input type="text" id="account-number" name="account_number" required aria-required="true" aria-describedby="account-error account-hint" />
+            <span class="form-group__hint" id="account-hint">Found on your water billing statement.</span>
+            <span class="form-group__error" id="account-error" role="alert">Account number is required.</span>
+          </div>
+
+          <p class="form-section-label">Contact Information</p>
+
+          <div class="form-group" id="fg-email">
+            <label for="email">Email Address <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-describedby="email-error" />
+            <span class="form-group__error" id="email-error" role="alert">Please enter a valid email address.</span>
+          </div>
+
+          <div class="form-group" id="fg-mobile">
+            <label for="mobile">Contact / Tel. No.</label>
+            <input type="tel" id="mobile" name="mobile" autocomplete="tel" placeholder="09XXXXXXXXX" />
+          </div>
+
+          <p class="form-section-label">Security</p>
+
+          <div class="form-group" id="fg-new-password">
+            <label for="new-password">Password <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+            <input type="password" id="new-password" name="password" autocomplete="new-password" required aria-required="true" aria-describedby="new-password-error new-password-hint" />
+            <span class="form-group__hint" id="new-password-hint">Minimum 8 characters.</span>
+            <span class="form-group__error" id="new-password-error" role="alert">Password must be at least 8 characters.</span>
+          </div>
+
+          <div class="form-group" id="fg-confirm-password">
+            <label for="confirm-password">Confirm Password <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+            <input type="password" id="confirm-password" name="confirm_password" autocomplete="new-password" required aria-required="true" aria-describedby="confirm-password-error" />
+            <span class="form-group__error" id="confirm-password-error" role="alert">Passwords do not match.</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+        </form>
+
+        <div class="form-card__footer">
+          <p>Already have an account? <a href="awas-login.html">Log in</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-secondary-placeholder"></div>
+
+
+  <script src="js/main.js"></script>
+  <script src="js/pages/awas-forms.js"></script>
+  <script src="js/search-autox.js"></script>
+  <script src="js/site-search.js"></script>
+</body>
+</html>

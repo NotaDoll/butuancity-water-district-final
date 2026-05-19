@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="E-Bill – Subscribe to electronic billing from BCWD." />
+    <title>E-Bill | BCWD</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages/awas-sub.css" />
+    <link rel="stylesheet" href="css/site-search.css">
+  </head>
+  <body>
+
+    <!-- ① Navbar — one line, component loaded from partials/navbar.html -->
+    <div id="navbar-placeholder"></div>
+    <div class="navbar-offset"></div>
+
+    <!-- ② Advisory bar — one line, loaded from partials/advisory-bar.html -->
+    <div id="advisory-placeholder"></div>
+
+    <!-- ③ Page-specific breadcrumb (stays here, it's unique per page) -->
+    <nav class="sub-breadcrumb" aria-label="Breadcrumb">
+      <div class="sub-breadcrumb__inner">
+        <a href="awas.html">AWAS</a>
+        <span class="sub-breadcrumb__sep" aria-hidden="true">›</span>
+        <span aria-current="page">E-Bill</span>
+      </div>
+    </nav>
+
+    <!-- ④ All your page content goes here, unchanged -->
+    <main id="main-content">
+      <section class="page-hero ebill-hero" aria-labelledby="ebill-title">
+        <h1 class="page-hero__title" id="ebill-title">E-Bill</h1>
+        <p class="page-hero__subtitle">
+          The BCWD e-Bill is an innovative system aimed at improving the billing
+          delivery services and reducing the billing-related environmental impact in the city.
+        </p>
+      </section>
+
+      <section class="sub-page" aria-labelledby="ebill-register-heading">
+        <div class="container">
+          <div class="ebill-stats" aria-label="E-Bill statistics">
+            <div class="ebill-stat">
+              <p class="ebill-stat__number">52</p>
+              <p class="ebill-stat__label">Barangays Covered</p>
+            </div>
+            <div class="ebill-stat">
+              <p class="ebill-stat__number">33</p>
+              <p class="ebill-stat__label">Billing Routes</p>
+            </div>
+            <div class="ebill-stat">
+              <p class="ebill-stat__number">22</p>
+              <p class="ebill-stat__label">Billing Staff</p>
+            </div>
+          </div>
+
+          <div class="form-card" aria-labelledby="ebill-register-heading">
+            <h2 class="form-card__title" id="ebill-register-heading">Register here</h2>
+            <p class="form-card__subtitle">
+              For multiple accounts, please use a separate email per account.
+            </p>
+            <form id="ebill-form" novalidate>
+              <div class="form-group" id="fg-ebill-account">
+                <label for="ebill-account">Account Number <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+                <input type="text" id="ebill-account" name="account_number" required aria-required="true" aria-describedby="ebill-account-error" />
+                <span class="form-group__error" id="ebill-account-error" role="alert">Account number is required.</span>
+              </div>
+              <div class="form-group" id="fg-ebill-email">
+                <label for="ebill-email">Email Address <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+                <input type="email" id="ebill-email" name="email" autocomplete="email" required aria-required="true" aria-describedby="ebill-email-error" />
+                <span class="form-group__error" id="ebill-email-error" role="alert">Please enter a valid email address.</span>
+              </div>
+              <div class="form-group" id="fg-ebill-name">
+                <label for="ebill-name">Name of Account</label>
+                <input type="text" id="ebill-name" name="account_name" autocomplete="name" />
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">Register →</button>
+            </form>
+            <div class="notice-banner" role="note" aria-label="Important notice">
+              ⚠️ Please make sure your email address is correct. You will receive your e-bill
+              at this address every billing cycle. For any concerns, contact us at
+              <a href="mailto:bcwd_pr@yahoo.com">bcwd_pr@yahoo.com</a>.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ⑤ Footer — one line, loaded from partials/footer-secondary.html -->
+    <div id="footer-secondary-placeholder"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/pages/awas-forms.js"></script>
+    <script src="js/search-auto.js"></script>
+    <script src="js/site-search.js"></script>
+  </body>
+</html>

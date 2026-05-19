@@ -1,0 +1,184 @@
+/* ═══════════════════════════════════════════════
+   css/global.css  —  IMPORT HUB
+   ═══════════════════════════════════════════════
+   Load order matters. Don't rearrange these.
+
+   ADDING A NEW COMPONENT:
+     1. Create css/components/your-component.css
+     2. Add one @import line below
+     3. Done — it's available site-wide.
+
+   ADDING A NEW PAGE:
+     1. Create css/pages/your-page.css
+     2. Link it ONLY in that page's <head>:
+        <link rel="stylesheet" href="css/pages/your-page.css">
+     3. Do NOT import it here.
+═══════════════════════════════════════════════ */
+
+/* ── Foundation (always first) ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import 'reset.css';
+@import 'variables.css';
+
+/* ── Shared components ── */
+@import 'components/navbar.css';
+@import 'components/advisory-bar.css';
+@import 'components/breadcrumb.css';
+@import 'components/footer.css';
+@import 'components/page-hero.css';
+@import 'components/sub-page.css';
+@import 'components/forms.css';
+
+/* ══════════════════════════════════════════════════════
+   BASE STYLES (body, container, section, utilities)
+   These don't belong to any single component or page.
+══════════════════════════════════════════════════════ */
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  background-color: var(--color-white);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+.section {
+  padding: var(--space-16) 0;
+}
+
+.section-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+
+/* ── RESPONSIVE: GLOBAL ── */
+
+/* Advisory bar wraps on mobile */
+@media (max-width: 600px) {
+  .advisory-bar {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .advisory-bar__link {
+    margin-left: auto;
+  }
+}
+
+/* Container padding tightens on small screens */
+@media (max-width: 480px) {
+  :root {
+    --container-pad: 1rem;
+    --space-20: 3rem;
+    --space-16: 2.5rem;
+  }
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--transition), color var(--transition);
+  text-decoration: none;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark, #111e3a);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-md);
+}
+
+/* ── Inline links ── */
+.learn-more {
+  color: var(--color-accent);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  transition: color var(--transition);
+}
+
+.learn-more:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.learn-more:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Accessibility ── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  z-index: 9999;
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}

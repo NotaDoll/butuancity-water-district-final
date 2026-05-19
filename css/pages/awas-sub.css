@@ -1,0 +1,366 @@
+/* ─────────────────────────────────────────────
+   css/pages/awas-sub.css
+   Styles ONLY for AWAS sub-pages.
+   Forms, breadcrumb, sub-page wrapper → already
+   in global.css via components/forms.css etc.
+   Only add things here that are unique to AWAS.
+───────────────────────────────────────────── */
+
+/* ── AWAS hero background override ── */
+.awas-hero {
+  background:
+    linear-gradient(to bottom, rgba(22, 31, 58, 0.598), #ffffff),
+    url("/images/background/aboutbackground.png") center/cover no-repeat;
+  padding: var(--space-16) var(--container-pad) var(--space-20);
+}
+
+/* ── E-Bill hero background override ── */
+.ebill-hero {
+  background:
+    linear-gradient(to bottom, rgba(22, 31, 58, 0.598), #ffffff),
+    url("/images/background/aboutbackground.png") center/cover no-repeat;
+}
+
+/* ── E-Bill stats ── */
+.ebill-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-12);
+  margin: var(--space-8) 0;
+  flex-wrap: wrap;
+}
+
+.ebill-stat {
+  text-align: center;
+}
+
+.ebill-stat__number {
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.ebill-stat__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+/* ── FAQ hero ── */
+.faq-hero {
+  background:
+    linear-gradient(to bottom, rgba(22, 31, 58, 0.598), #ffffff),
+    url("/images/background/aboutbackground.png") center/cover no-repeat;
+  color: var(--color-white);
+  padding: var(--space-16) var(--container-pad);
+  text-align: center;
+}
+
+.faq-hero__title {
+  font-size: var(--font-size-3xl);
+  font-weight: 800;
+  margin-bottom: var(--space-4);
+}
+
+.faq-hero__subtitle {
+  font-size: var(--font-size-md);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── FAQ accordion ── */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.faq-item {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item__question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: var(--space-6);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  transition: background-color var(--transition), color var(--transition);
+  line-height: 1.4;
+}
+
+.faq-item__question:hover,
+.faq-item.is-open .faq-item__question {
+  color: var(--color-primary);
+  background-color: var(--color-gray-100);
+}
+
+.faq-item__question:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: -3px;
+  border-radius: calc(var(--radius-lg) - 2px);
+}
+
+.faq-item__icon {
+  flex-shrink: 0;
+  transition: transform var(--transition);
+  color: var(--color-text-muted);
+}
+
+.faq-item.is-open .faq-item__icon {
+  transform: rotate(45deg);
+}
+
+.faq-item__answer {
+  display: none;
+  padding: var(--space-6) var(--space-6) var(--space-8);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.faq-item__answer p {
+  margin-bottom: var(--space-4);
+}
+
+.faq-item__answer p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-item.is-open .faq-item__answer {
+  display: block;
+}
+
+/* ── Payment tabs ── */
+.payment-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--color-gray-200);
+  margin-bottom: var(--space-8);
+}
+
+.payment-tab {
+  padding: var(--space-3) var(--space-8);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.payment-tab.is-active       { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+.payment-tab--gcash.is-active { color: #007aff; border-bottom-color: #007aff; }
+.payment-tab--maya.is-active  { color: #00b04f; border-bottom-color: #00b04f; }
+
+.payment-tab:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.payment-panel         { display: none; }
+.payment-panel.is-active { display: block; }
+
+/* ── Video placeholder ── */
+.video-placeholder {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: var(--radius-xl);
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-8);
+  overflow: hidden;
+}
+
+.video-placeholder__play {
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.video-placeholder__play:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+/* ── Payment step images ── */
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.step-item--text-left {
+  flex-direction: row-reverse;
+}
+
+.step-item__image {
+  flex: 0 0 280px;
+}
+
+.step-item__image img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-200);
+}
+
+.step-item__image--placeholder .image-placeholder {
+  width: 100%;
+  aspect-ratio: 9/16;
+  background: var(--color-gray-100);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--color-primary);
+}
+
+.step-item__content {
+  flex: 1;
+}
+
+.step-number {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-primary);
+  background: var(--color-accent-light);
+  padding: var(--space-1) var(--space-3);
+  border-radius: 999px;
+  margin-bottom: var(--space-2);
+}
+
+.step-description {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .step-item,
+  .step-item--text-left {
+    flex-direction: column;
+  }
+
+  .step-item__image {
+    flex: unset;
+    width: 100%;
+  }
+
+  .faq-item__question {
+    padding: var(--space-5);
+  }
+
+  .faq-item__answer {
+    padding: var(--space-5) var(--space-5) var(--space-6);
+  }
+
+  .ebill-stats {
+    gap: var(--space-6);
+  }
+
+  .payment-tab {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+  }
+}
+/* ── RESPONSIVE: AWAS SUB-PAGES ── */
+
+/* Tablet (≤768px) */
+@media (max-width: 768px) {
+  /* E-Bill stats */
+  .ebill-stats {
+    gap: var(--space-6);
+  }
+
+  /* Payment tabs */
+  .payment-tab {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+    flex: 1;
+    text-align: center;
+  }
+
+  /* Payment steps: stack vertically */
+  .step-item,
+  .step-item--text-left {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .step-item__image {
+    flex: unset;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  /* FAQ */
+  .faq-item__question {
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-size-sm);
+  }
+
+  .faq-item__answer {
+    padding: var(--space-4) var(--space-5) var(--space-6);
+  }
+}
+
+/* Mobile (≤480px) */
+@media (max-width: 480px) {
+  .ebill-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .payment-tabs {
+    gap: 0;
+  }
+
+  .payment-tab {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+
+  .video-placeholder {
+    border-radius: var(--radius-lg);
+  }
+}

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Bill Calculator – Calculate your BCWD water bill consumption." />
+  <title>Bill Calculator | BCWD</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/awas-sub.css" />
+  <link rel="stylesheet" href="css/site-search.css">
+  <style>
+    .sub-page {
+  background: var(--color-white);
+}
+    .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: none;
+      overflow: hidden;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* LEFT PANEL */
+    .calc-left {
+      padding: var(--space-10) var(--space-8);
+    }
+
+    .calc-left h1 {
+      font-size: var(--font-size-3xl);
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: var(--space-4);
+      line-height: 1.15;
+    }
+
+    .calc-intro {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      margin-bottom: var(--space-8);
+    }
+
+    .calc-intro strong { color: var(--color-primary); font-weight: 700; }
+
+    .field-label {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    .field-group { margin-bottom: var(--space-6); }
+
+    .field-error {
+      font-size: var(--font-size-xs);
+      color: var(--color-red);
+      margin-top: var(--space-1);
+      display: none;
+    }
+    .field-error.is-visible { display: block; }
+
+    /* Segmented control number */
+    .control-number-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .control-number-row input {
+      flex: 1;
+      min-width: 0;
+      text-align: center;
+      padding: var(--space-2) var(--space-2);
+      border: 1.5px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      font-family: monospace;
+      color: var(--color-text);
+      background: var(--color-white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .control-number-row input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(74,144,217,0.15);
+    }
+
+    .control-number-row input.has-error { border-color: var(--color-red); }
+
+    .control-sep {
+      font-weight: 700;
+      color: var(--color-text-muted);
+      flex-shrink: 0;
+    }
+
+    /* Consumption */
+    .consumption-input {
+      width: 100%;
+      padding: var(--space-2) var(--space-3);
+      border: 1.5px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      font-family: monospace;
+      color: var(--color-text);
+      background: var(--color-white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .consumption-input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(74,144,217,0.15);
+    }
+
+    .consumption-input.has-error { border-color: var(--color-red); }
+
+    /* Actions row */
+    .calc-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+
+    .view-help-btn {
+      font-size: var(--font-size-sm);
+      color: var(--color-accent);
+      text-decoration: underline;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color var(--transition);
+    }
+
+    .view-help-btn:hover { color: var(--color-primary); }
+
+    .divider-pipe {
+      color: var(--color-gray-200);
+      flex-shrink: 0;
+    }
+
+    .compute-btn {
+      flex: 1;
+      background: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), opacity var(--transition);
+    }
+
+    .compute-btn:disabled {
+      background: var(--color-gray-400);
+      cursor: not-allowed;
+      opacity: 1;
+    }
+
+    .compute-btn:not(:disabled):hover {
+      background: var(--color-primary-dark, #111e3a);
+    }
+
+    /* RIGHT PANEL — navy receipt */
+    .calc-right {
+      background: var(--color-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-10) var(--space-8);
+      position: relative;
+    }
+
+    /* Zig-zag receipt top edge */
+    .calc-right::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background:
+        linear-gradient(135deg, var(--color-white) 33.33%, transparent 33.33%) 0 0,
+        linear-gradient(-135deg, var(--color-white) 33.33%, transparent 33.33%) 0 0;
+      background-size: 20px 20px;
+      background-repeat: repeat-x;
+    }
+
+    .bill-label {
+      font-size: var(--font-size-sm);
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.04em;
+      margin-bottom: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .bill-amount {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--color-white);
+      letter-spacing: -2px;
+      line-height: 1;
+      transition: color 0.3s ease;
+    }
+
+    .bill-amount.is-placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .bill-note {
+      font-size: var(--font-size-xs);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      margin-top: var(--space-8);
+      max-width: 200px;
+      line-height: 1.6;
+    }
+
+    /* Help overlay */
+.help-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0,0,0,0.72);
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);   /* was var(--space-6) */
+}
+
+    .help-overlay.is-open { display: flex; }
+
+    .help-overlay__inner {
+  position: relative;
+  max-width: 480px;   /* was 640px */
+  width: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+  background: var(--color-white);
+  max-height: 90vh;          /* ADD THIS — caps height to viewport */
+  overflow-y: auto;          /* ADD THIS — scrolls if still too tall */
+}
+
+.help-overlay__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 85vh;          /* ADD THIS — image never exceeds screen */
+  object-fit: contain;       /* ADD THIS — no cropping */
+}
+    .help-overlay__fallback {
+      padding: var(--space-8);
+    }
+
+    .help-overlay__fallback h2 {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .help-overlay__fallback ol {
+      font-size: var(--font-size-sm);
+      color: var(--color-text);
+      line-height: 2;
+      list-style: decimal;
+      padding-left: var(--space-6);
+    }
+
+    .help-overlay__close {
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.55);
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+      z-index: 1;
+    }
+
+    .help-overlay__close:hover { background: rgba(0,0,0,0.8); }
+    .help-overlay__close:focus-visible {
+      outline: 3px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .calc-layout { grid-template-columns: 1fr; }
+
+      .calc-right {
+        padding: var(--space-10) var(--space-8) var(--space-8);
+      }
+
+      .bill-amount { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+  <div class="navbar-offset"></div>
+  <div id="advisory-placeholder"></div>
+
+  <nav class="sub-breadcrumb" aria-label="Breadcrumb">
+    <div class="sub-breadcrumb__inner">
+      <a href="awas.html">AWAS</a>
+      <span class="sub-breadcrumb__sep" aria-hidden="true">›</span>
+      <span aria-current="page">Bill Calculator</span>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="sub-page">
+      <div class="container" style="max-width:920px;">
+
+        <div class="calc-layout">
+
+          <!-- LEFT: inputs -->
+          <div class="calc-left">
+            <h1>Bill Calculator</h1>
+            <p class="calc-intro">
+              Enter your <strong>control no.</strong> and your <strong>cu.m. consumed</strong>
+              which is your <strong>present reading minus the previous reading.</strong>
+            </p>
+
+            <form id="calc-form" novalidate>
+
+              <div class="field-group">
+                <label class="field-label">Control No.:</label>
+                <div class="control-number-row">
+                  <input type="text" id="cn-a" maxlength="3"  placeholder="123"   aria-label="Control number part 1" inputmode="numeric" />
+                  <span class="control-sep" aria-hidden="true">—</span>
+                  <input type="text" id="cn-b" maxlength="5"  placeholder="00123" aria-label="Control number part 2" inputmode="numeric" />
+                  <span class="control-sep" aria-hidden="true">—</span>
+                  <input type="text" id="cn-c" maxlength="1"  placeholder="1"     aria-label="Control number part 3" style="max-width:48px;" inputmode="numeric" />
+                </div>
+                <span class="field-error" id="cn-error">Please enter your complete control number.</span>
+              </div>
+
+              <div class="field-group">
+                <label class="field-label" for="consumption">Cu. M Consumed:</label>
+                <input
+                  type="number"
+                  id="consumption"
+                  class="consumption-input"
+                  step="0.01"
+                  min="0"
+                  placeholder="e.g. 15"
+                />
+                <span class="field-error" id="consumption-error">Please enter a valid value greater than 0.</span>
+              </div>
+
+              <div class="calc-actions">
+                <button type="button" class="view-help-btn" id="view-help" aria-haspopup="dialog">
+                  View Help
+                </button>
+                <span class="divider-pipe" aria-hidden="true">|</span>
+                <button type="submit" class="compute-btn" id="compute-btn" disabled>
+                  Compute Bill
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- RIGHT: bill display -->
+          <div class="calc-right" aria-live="polite" aria-atomic="true">
+            <p class="bill-label">Current Bill (Php)</p>
+            <p class="bill-amount is-placeholder" id="result-amount">00.00</p>
+            <p class="bill-note">* Estimate only. Refer to your official water bill for accurate billing.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-secondary-placeholder"></div>
+
+  <!-- Help overlay -->
+  <div
+    class="help-overlay"
+    id="help-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-label="How to compute your bill"
+    hidden
+  >
+    <div class="help-overlay__inner">
+      <button class="help-overlay__close" id="help-close" aria-label="Close help">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <!--
+        Place your help image at:  images/help/bill-calculator-guide.jpg
+        The fallback text shows automatically until the image is added.
+      -->
+      <img
+        src="images/help/bill-calculator-guide.png"
+        alt="Guide on how to read your water meter and compute your bill"
+        class="help-overlay__img"
+        id="help-img"
+        onerror="this.style.display='none'; document.getElementById('help-fallback').style.display='block';"
+      />
+
+      <div class="help-overlay__fallback" id="help-fallback" style="display:none;">
+        <h2>How to Compute Your Bill</h2>
+        <ol>
+          <li>Find your <strong>present reading</strong> on your water meter.</li>
+          <li>Find your <strong>previous reading</strong> from your last bill.</li>
+          <li>Subtract: <strong>Present − Previous = Cu. M Consumed</strong>.</li>
+          <li>Enter that number in the <em>Cu. M Consumed</em> field.</li>
+          <li>Click <em>Compute Bill</em> to see your estimated amount.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/search-auto.js"></script>
+  <script src="js/site-search.js"></script>
+
+  <script>
+    const RATES = [
+      { upTo: 10,   base: 208.65, perCubic: 0     },
+      { upTo: 20,   base: 208.65, perCubic: 21.50 },
+      { upTo: 30,   base: 423.65, perCubic: 28.50 },
+      { upTo: 9999, base: 708.65, perCubic: 31.50 },
+    ];
+
+    function calculateBill(m3) {
+      for (let i = 0; i < RATES.length; i++) {
+        if (m3 <= RATES[i].upTo) {
+          const prev   = i > 0 ? RATES[i - 1].upTo : 0;
+          const excess = Math.max(0, m3 - prev);
+          return RATES[i].base + excess * RATES[i].perCubic;
+        }
+      }
+      return null;
+    }
+
+    const cnA        = document.getElementById('cn-a');
+    const cnB        = document.getElementById('cn-b');
+    const cnC        = document.getElementById('cn-c');
+    const cnError    = document.getElementById('cn-error');
+    const consInput  = document.getElementById('consumption');
+    const consError  = document.getElementById('consumption-error');
+    const computeBtn = document.getElementById('compute-btn');
+    const resultEl   = document.getElementById('result-amount');
+    const form       = document.getElementById('calc-form');
+
+    /* Auto-advance between segments */
+    cnA.addEventListener('input', () => { if (cnA.value.length === 3) cnB.focus(); checkValidity(); });
+    cnB.addEventListener('input', () => { if (cnB.value.length === 5) cnC.focus(); checkValidity(); });
+    cnC.addEventListener('input', checkValidity);
+    consInput.addEventListener('input', checkValidity);
+
+    function isCnValid()   { return cnA.value.trim() && cnB.value.trim() && cnC.value.trim(); }
+    function isConsValid() { const v = parseFloat(consInput.value); return !isNaN(v) && v > 0; }
+
+    function checkValidity() {
+      computeBtn.disabled = !(isCnValid() && isConsValid());
+      if (isCnValid())   { [cnA,cnB,cnC].forEach(el => el.classList.remove('has-error')); cnError.classList.remove('is-visible'); }
+      if (isConsValid()) { consInput.classList.remove('has-error'); consError.classList.remove('is-visible'); }
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      let ok = true;
+
+      if (!isCnValid()) {
+        [cnA,cnB,cnC].forEach(el => el.classList.add('has-error'));
+        cnError.classList.add('is-visible');
+        ok = false;
+      }
+      if (!isConsValid()) {
+        consInput.classList.add('has-error');
+        consError.classList.add('is-visible');
+        ok = false;
+      }
+      if (!ok) return;
+
+      const bill = calculateBill(parseFloat(consInput.value));
+      if (bill !== null) {
+        resultEl.textContent = bill.toFixed(2);
+        resultEl.classList.remove('is-placeholder');
+      }
+    });
+
+    /* Help overlay */
+    const overlay  = document.getElementById('help-overlay');
+    const helpBtn  = document.getElementById('view-help');
+    const closeBtn = document.getElementById('help-close');
+
+    helpBtn.addEventListener('click', () => {
+      overlay.hidden = false;
+      overlay.classList.add('is-open');
+      closeBtn.focus();
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeHelp() {
+      overlay.classList.remove('is-open');
+      overlay.hidden = true;
+      document.body.style.overflow = '';
+      helpBtn.focus();
+    }
+
+    closeBtn.addEventListener('click', closeHelp);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeHelp(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeHelp();
+    });
+  </script>
+</body>
+</html>

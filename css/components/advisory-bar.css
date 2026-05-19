@@ -1,0 +1,49 @@
+/* ─────────────────────────────────────────────
+   css/components/advisory-bar.css
+   Edit this file to change the red alert banner.
+───────────────────────────────────────────── */
+
+.advisory-bar {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  padding: var(--space-2) var(--container-pad);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+.advisory-bar__dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.advisory-bar__text {
+  flex: 1;
+}
+
+.advisory-bar__link {
+  color: var(--color-white);
+  font-weight: 600;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.advisory-bar__link:hover {
+  opacity: 0.85;
+}
+
+.advisory-bar__link:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
