@@ -72,9 +72,65 @@
 
   <div id="footer-secondary-placeholder"></div>
 
+  <!-- External scripts (your existing ones) -->
   <script src="js/main.js"></script>
   <script src="js/pages/publications.js"></script>
   <script src="js/search-auto.js"></script>
   <script src="js/site-search.js"></script>
+
+  <!-- FIX: Force all PDF links inside the publications grid to open in a new tab -->
+  <script>
+    (function() {
+      // Function to add target="_blank" to all PDF links within the grid
+      function forcePdfLinksToNewTab() {
+        const grid = document.getElementById('publications-grid');
+        if (!grid) return;
+        
+        const pdfLinks = grid.querySelectorAll('a[href$=".pdf"], a[href*=".pdf?"], a[href*=".pdf#"]');
+        pdfLinks.forEach(link => {
+          if (!link.getAttribute('target')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          }
+        });
+      }
+
+      // Run immediately in case the grid is already populated
+      forcePdfLinksToNewTab();
+
+      // Observe DOM changes in case publications are loaded dynamically (e.g., fetch, setTimeout)
+      const observer = new MutationObserver(function(mutations) {
+        // Check if any new nodes were added
+        let shouldRun = false;
+        for (const mutation of mutations) {
+          if (mutation.addedNodes.length > 0) {
+            shouldRun = true;
+            break;
+          }
+        }
+        if (shouldRun) {
+          forcePdfLinksToNewTab();
+        }
+      });
+
+      const grid = document.getElementById('publications-grid');
+      if (grid) {
+        observer.observe(grid, { childList: true, subtree: true });
+      }
+
+      // Fallback: use event delegation to intercept clicks on PDF links
+      // This ensures that even if target="_blank" is somehow missed, the link still opens in new tab
+      document.body.addEventListener('click', function(e) {
+        const link = e.target.closest('a[href$=".pdf"], a[href*=".pdf?"], a[href*=".pdf#"]');
+        if (link && document.getElementById('publications-grid')?.contains(link)) {
+          // If the link doesn't have target="_blank" (or has but we want to be extra safe)
+          if (!link.target || link.target !== '_blank') {
+            e.preventDefault();
+            window.open(link.href, '_blank', 'noopener,noreferrer');
+          }
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
