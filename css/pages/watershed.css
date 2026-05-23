@@ -1,9 +1,16 @@
-/* PAGE HERO - with background image */
-.page-hero {
-  position: relative;
-  background-size: cover;
-  background-position: center 30%;
-  background-repeat: no-repeat;
+/* ── WATERSHED HERO (uniformized with AWAS hero – dark deep green) ── */
+.watershed-hero {
+  /* Deep green gradient (matches AWAS structure but in green tones) */
+  background:
+    linear-gradient(
+      to bottom,
+      #0a2f1f 0%,      /* very dark forest green */
+      #1e4d2e 45%,     /* deep green */
+      #3e7a5c 75%,     /* lighter green */
+      #ffffff 100%     /* fades to white at the bottom */
+    ),
+    url('images/watershed/hero-watershed.jpg') center 30% / cover no-repeat;
+  background-blend-mode: overlay;
   min-height: 60vh;
   display: flex;
   flex-direction: column;
@@ -15,73 +22,37 @@
   isolation: isolate;
 }
 
-/* Dark overlay for text readability */
-.page-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%);
-  z-index: -1;
+/* Remove the dark overlay pseudo-element because we are using blend mode */
+.watershed-hero::before {
+  display: none;
 }
 
-/* Specific watershed hero with forest/water image */
-.watershed-hero {
-  background-image: url('images/watershed/hero-watershed.jpg');
-  /* Fallback solid color while image loads */
-  background-color: #1a3c2c;
-}
-
-/* Fallback if the specific image doesn't exist */
-.watershed-hero {
-  background-image: url('images/hero-watershed-default.jpg');
-}
-
-/* Additional fallback if neither image exists - use a gradient as emergency */
-@supports not (background-image: url('images/watershed/hero-watershed.jpg')) {
+/* Fallback if the background image fails – solid green gradient */
+@supports not (background-blend-mode: overlay) {
   .watershed-hero {
-    background: linear-gradient(135deg, #1a472a 0%, #0d2818 100%);
+    background: linear-gradient(135deg, #0a2f1f 0%, #1e4d2e 45%, #3e7a5c 75%, #ffffff 100%);
   }
 }
 
-/* Title styling */
-.page-hero__title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: var(--space-md, 1rem);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+/* Keep title/subtitle styling consistent with page-hero */
+.watershed-hero .page-hero__title,
+.watershed-hero .page-hero__subtitle {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
   max-width: 90%;
-}
-
-/* Subtitle styling */
-.page-hero__subtitle {
-  font-size: clamp(1rem, 3vw, 1.5rem);
-  font-weight: 400;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-  max-width: 80%;
-  opacity: 0.95;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .page-hero {
+  .watershed-hero {
     min-height: 40vh;
     background-position: center 40%;
   }
-  
-  .page-hero__subtitle {
-    max-width: 90%;
-  }
 }
 
-/* Optional: parallax effect (remove if not wanted) */
-.watershed-hero {
-  background-attachment: fixed;
-  background-size: cover;
-}
-
+/* Disable parallax on mobile (optional, but keeps performance) */
 @media (max-width: 768px) {
   .watershed-hero {
-    background-attachment: scroll; /* Better performance on mobile */
+    background-attachment: scroll;
   }
 }
 

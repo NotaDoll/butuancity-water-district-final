@@ -5,11 +5,16 @@
 ───────────────────────────────────────────── */
 
 /* ── Hero background ── */
+/* ── Hero background (uniformized with AWAS hero) ── */
 .about-hero {
   background:
-    linear-gradient(to bottom, rgba(22, 31, 58, 0.598), #ffffff),
-    url("/images/background/aboutbackground.png") center/cover no-repeat;
-}
+    linear-gradient(
+      to bottom,
+      #020493 0%,
+      #0521c5 45%,
+      #5671ba 75%,
+      #ffffff 100%
+    )}
 
 /* ── Vision Mission Core Values ── */
 .vmc {

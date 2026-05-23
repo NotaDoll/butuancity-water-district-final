@@ -14,13 +14,7 @@
       #0521c5 45%,
       #5671ba 75%,
       #ffffff 100%
-    ),
-    url("/butuancity-water-district-main/images/background/aboutbackground.png")
-      center/cover no-repeat;
-
-  background-blend-mode: overlay;
-
-  padding: var(--space-16) var(--container-pad) var(--space-20);
+    )
 }
 
 .awas-services__grid {
